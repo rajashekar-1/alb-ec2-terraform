@@ -1,0 +1,5 @@
+# Ignore Terraform state and cache
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
