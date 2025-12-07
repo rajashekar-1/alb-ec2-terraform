@@ -19,3 +19,6 @@
                            |
                            v
                          VPC
+
+
+![ALB Architecture](./images/alb-architecture.png)
