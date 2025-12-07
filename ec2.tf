@@ -1,5 +1,6 @@
+# EC2 Instance 1
 resource "aws_instance" "web1" {
-  ami                    = var.ami_id
+  ami                    = "ami-0f00d706c4a80fd93" # Amazon Linux 2023 x86_64 HVM
   instance_type          = var.instance_type
   subnet_id              = aws_subnet.public_subnet_1.id
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
@@ -12,11 +13,14 @@ sudo systemctl start httpd
 sudo systemctl enable httpd
 EOF
 
-  tags = { Name = "WebServer1" }
+  tags = {
+    Name = "WebServer1"
+  }
 }
 
+# EC2 Instance 2
 resource "aws_instance" "web2" {
-  ami                    = var.ami_id
+  ami                    = "ami-0f00d706c4a80fd93" # Amazon Linux 2023 x86_64 HVM
   instance_type          = var.instance_type
   subnet_id              = aws_subnet.public_subnet_2.id
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
@@ -29,17 +33,7 @@ sudo systemctl start httpd
 sudo systemctl enable httpd
 EOF
 
-  tags = { Name = "WebServer2" }
-}
-
-resource "aws_lb_target_group_attachment" "web1_attach" {
-  target_group_arn = aws_lb_target_group.app_tg.arn
-  target_id        = aws_instance.web1.id
-  port             = 80
-}
-
-resource "aws_lb_target_group_attachment" "web2_attach" {
-  target_group_arn = aws_lb_target_group.app_tg.arn
-  target_id        = aws_instance.web2.id
-  port             = 80
+  tags = {
+    Name = "WebServer2"
+  }
 }
