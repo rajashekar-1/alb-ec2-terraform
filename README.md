@@ -1,5 +1,11 @@
 ## Project Architecture
 
+![ALB Architecture](./alb-architecture.png)
+
+
+
+
+
                      Internet Users
                            |
                            v
@@ -21,4 +27,4 @@
                          VPC
 
 
-![ALB Architecture](./images/alb-architecture.png)
+
